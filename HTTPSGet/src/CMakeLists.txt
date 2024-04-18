@@ -21,7 +21,21 @@ target_link_libraries(${NAME}
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
      )
-     
+
+file(READ "${CMAKE_CURRENT_SOURCE_DIR}/../../c_ssid.txt" SSID)
+file(READ "${CMAKE_CURRENT_SOURCE_DIR}/../../c_password.txt" PASSWORD)
+
+# Remove trailing newline characters if present
+string(STRIP ${SSID} SSID)
+string(STRIP ${PASSWORD} PASSWORD)
+
+# Set the WIFI_SSID and WIFI_PASSWORD environment variables
+set(ENV{WIFI_SSID} ${SSID})
+set(ENV{WIFI_PASSWORD} ${PASSWORD})
+
+message("WIFI_SSID: $ENV{WIFI_SSID}")
+message("WIFI_PASSWORD: $ENV{WIFI_PASSWORD}")
+
 if (NOT DEFINED ENV{WIFI_SSID})
 	message(FATAL_ERROR "WIFI_SSID Environment variable not defined")
 endif()

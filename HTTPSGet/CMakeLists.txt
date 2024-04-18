@@ -5,12 +5,18 @@ set(NAME HTTPSGet) # <-- Name your project/executable here!
 
 set(PICO_BOARD pico_w)
 
+set(PICO_SDK_FETCH_FROM_GIT on)
 include(pico_sdk_import.cmake)
 
 # Gooey boilerplate
 project(${NAME} C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
+
+
+
+message("WIFI_SSID: $ENV{WIFI_SSID}")
+message("WIFI_PASSWORD: $ENV{WIFI_PASSWORD}")
 
 # Initialize the SDK
 pico_sdk_init()

@@ -69,3 +69,5 @@ Temporary Items
 .cproject
 .pydevproject
 .settings
+c_ssid.txt
+c_password.txt
